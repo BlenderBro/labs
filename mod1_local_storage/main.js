@@ -16,7 +16,7 @@ fetch('http://5af373afcca5e20014bba4d7.mockapi.io/tasks')
         // let allTasks = tasks.tasks;
 
         for (let i = 0; i < tasks.length; i++) {
-            document.getElementById("taskList").innerHTML += '<tr><td value="" id="task"><a href="#" onclick="details('+ tasks[i].id +')">' + tasks[i].task_name + '</a></td><td id="status">' + tasks[i].task_status + '</td></tr><br>';
+            document.getElementById("taskList").innerHTML += '<tr><td value="" id="task"><a href="#" onclick="details(' + tasks[i].id + ')">' + tasks[i].task_name + '</a></td><td id="status">' + tasks[i].task_status + '</td></tr><br>';
         }
     });
 
@@ -35,7 +35,7 @@ document.getElementById('postTask').addEventListener('click', function () {
         method: 'POST',
         headers: new Headers,
         body: {
-            'task_name':taskName, 
+            'task_name': taskName,
             'task_status': taskStatus
         }
     })
@@ -44,7 +44,7 @@ document.getElementById('postTask').addEventListener('click', function () {
         })
         .then(function (addedTask) {
             //refresh tasks list
-            document.getElementById("taskList").innerHTML += '<tr><td id="task"><a href="#" onclick="details('+ addedTask.id +')">' + addedTask.task_name + '</td><td id="status">' + addedTask.task_status + '</td></tr><br>';
+            document.getElementById("taskList").innerHTML += '<tr><td id="task"><a href="#" onclick="details(' + addedTask.id + ')">' + addedTask.task_name + '</td><td id="status">' + addedTask.task_status + '</td></tr><br>';
             //clear taskName input
             this.taskName.value = '';
             // console.log(this.taskName.value)
@@ -56,40 +56,25 @@ document.getElementById('postTask').addEventListener('click', function () {
 
 //with jquery
 
-function details(id){
+function details(id) {
     // //get modal text targets
     let modalTaskName = document.getElementById('taskModalName');
     let modalTaskDescription = $('#taskModalDescription');
 
-    fetch('http://5af373afcca5e20014bba4d7.mockapi.io/tasks/'+id)
-    .then(function (response) {
-        return response.json();
-    }).then(function (singleTask) {
-
-        $('#taskDetail').modal({
-            'show': true,
-            'keyboard' : true
+    fetch('http://5af373afcca5e20014bba4d7.mockapi.io/tasks/' + id)
+        .then(function (response) {
+            return response.json();
+        }).then(function (singleTask) {
+            document.getElementById("taskDetail").innerHTML = `
+                <div class="form-group row">                            
+                    <div class="col-sm-10">
+                        <h5 id="taskNameDetail">${singleTask.task_name}</h5>
+                    </div>
+                    <div class="col-sm-10">
+                        <span id="taskNameDetail">${singleTask.task_description}</span>
+                    </div>
+                </div>`
         });
-        
-        document.getElementById('taskDetail').innerHTML = `
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="taskModalName">${singleTask.task_name}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div id="taskModalDescription" class="modal-body">
-                    ${singleTask.task_description}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>                    
-                </div>
-            </div>
-        </div>
-        `       
-    });
 
-   
+
 }
