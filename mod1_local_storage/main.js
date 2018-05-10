@@ -1,6 +1,25 @@
 /*  Using fetch javascript API we will learn how to GET data
-*  from an JSON database.
+*   from an JSON database.
 */
+
+
+
+/*
+*   GET Data from Local file
+*   On page load, make a request to get the tasks
+*   @return JSON tasks : array
+*/
+fetch('db.json')
+    .then(function (response) {
+        return response.json();
+    }).then(function (tasks) {
+        console.log(tasks)
+        let allTasks = tasks.tasks;
+
+        for (let i = 0; i < allTasks.length; i++) {
+            document.getElementById("taskList").innerHTML += '<tr><td value="" id="task">' + allTasks[i].task_name + '</a></td><td id="status">' + allTasks[i].task_status + '</td></tr><br>';
+        }
+    });
 
 
 /*
@@ -8,23 +27,27 @@
 *   On page load, make a request to mockapi and get the tasks
 *   @return JSON object array
 */
-fetch('http://5af373afcca5e20014bba4d7.mockapi.io/tasks')
-    .then(function (response) {
-        return response.json();
-    }).then(function (tasks) {
-        console.log(tasks)
-        // let allTasks = tasks.tasks;
 
-        for (let i = 0; i < tasks.length; i++) {
-            document.getElementById("taskList").innerHTML += '<tr><td value="" id="task"><a href="#" onclick="details(' + tasks[i].id + ')">' + tasks[i].task_name + '</a></td><td id="status">' + tasks[i].task_status + '</td></tr><br>';
-        }
-    });
+// fetch('http://5af373afcca5e20014bba4d7.mockapi.io/tasks')
+//     .then(function (response) {
+//         return response.json();
+//     }).then(function (tasks) {
+//         console.log(tasks)
+//         // let allTasks = tasks.tasks;
+
+//         for (let i = 0; i < tasks.length; i++) {
+//             document.getElementById("taskList").innerHTML += '<tr><td value="" id="task"><a href="#" onclick="details(' + tasks[i].id + ')">' + tasks[i].task_name + '</a></td><td id="status">' + tasks[i].task_status + '</td></tr><br>';
+//         }
+//     });
+
+
 
 /*
 *   POST data to local API
 *   Add event listner on the button and execute the post request
-*   @return status code
+*   @return status code success or fail
 */
+
 document.getElementById('postTask').addEventListener('click', function () {
     //get and store task_name & task_status
     let taskName = document.getElementById('taskName').value;
@@ -54,7 +77,11 @@ document.getElementById('postTask').addEventListener('click', function () {
         })
 });
 
-//with jquery
+/*
+*   GET single task item
+*   Add event listner on the task name and execute the get request
+*   @return single task object
+*/
 
 function details(id) {
     // //get modal text targets
