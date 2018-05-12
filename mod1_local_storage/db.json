@@ -1,20 +1,18 @@
-{
-    "tasks" : [
-        {
-            "task_name" : "First Task",
-            "task_status": "pending"
-        },
-        {
-            "task_name" : "Second Task",
-            "task_status": "pending"
-        },
-        {
-            "task_name" : "Third Task",
-            "task_status": "pending"
-        },
-        {
-            "task_name" : "Fourth Task",
-            "task_status": "complete"
-        }
-    ]
-}
+[
+    {
+        "task_name": "First Task",
+        "task_status": "pending"
+    },
+    {
+        "task_name": "Second Task",
+        "task_status": "pending"
+    },
+    {
+        "task_name": "Third Task",
+        "task_status": "pending"
+    },
+    {
+        "task_name": "Fourth Task",
+        "task_status": "complete"
+    }
+]
