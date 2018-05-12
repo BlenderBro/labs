@@ -9,36 +9,35 @@
 *   On page load, make a request to get the tasks
 *   @return JSON tasks : array
 */
-fetch('db.json')
-    .then(function (response) {
-        return response.json();
-    }).then(function (tasks) {
-        console.log(tasks)
-        let allTasks = tasks.tasks;
-
-        for (let i = 0; i < allTasks.length; i++) {
-            document.getElementById("taskList").innerHTML += '<tr><td value="" id="task">' + allTasks[i].task_name + '</a></td><td id="status">' + allTasks[i].task_status + '</td></tr><br>';
-        }
-    });
-
-
-/*
-*   GET Data from Local API
-*   On page load, make a request to mockapi and get the tasks
-*   @return JSON object array
-*/
-
-// fetch('http://5af373afcca5e20014bba4d7.mockapi.io/tasks')
+// fetch('db.json')
 //     .then(function (response) {
 //         return response.json();
 //     }).then(function (tasks) {
 //         console.log(tasks)
-//         // let allTasks = tasks.tasks;
 
 //         for (let i = 0; i < tasks.length; i++) {
-//             document.getElementById("taskList").innerHTML += '<tr><td value="" id="task"><a href="#" onclick="details(' + tasks[i].id + ')">' + tasks[i].task_name + '</a></td><td id="status">' + tasks[i].task_status + '</td></tr><br>';
+//             document.getElementById("taskList").innerHTML += '<tr><td value="" id="task">' + tasks[i].task_name + '</a></td><td id="status">' + tasks[i].task_status + '</td></tr><br>';
 //         }
 //     });
+
+
+/*
+*   GET Data from remote API
+*   On page load, make a request to mockapi and get the tasks
+*   @return JSON object array
+*/
+
+fetch('http://5af373afcca5e20014bba4d7.mockapi.io/tasks')
+    .then(function (response) {
+        return response.json();
+    }).then(function (tasks) {
+        console.log(tasks)
+        // let allTasks = tasks.tasks;
+
+        for (let i = 0; i < tasks.length; i++) {
+            document.getElementById("taskList").innerHTML += '<tr><td value="" id="task"><a href="#" onclick="details(' + tasks[i].id + ')">' + tasks[i].task_name + '</a></td><td id="status">' + tasks[i].task_status + '</td></tr><br>';
+        }
+    });
 
 
 
