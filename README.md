@@ -27,3 +27,8 @@ Javascript's fetch api examples with mockapi.io and a local json file.
 ### Folder: mod2_filter_search
 
 Making a simple javascript filter function. Examples for remote api with fetch and parsing a local json file.
+
+## Mod3
+### Folder: mod3_nodejs_npm
+
+Making a simple node server. Learn about mimetypes and serving static files
