@@ -1,0 +1,26 @@
+[
+    {
+        "nume": "Logan",
+        "capacitate": 1400
+    },
+    {
+        "nume": "Opel",
+        "capacitate": 1500
+    },
+    {
+        "nume": "Ford",
+        "capacitate": 6400
+    },
+    {
+        "nume": "Volvo",
+        "capacitate": 2300
+    },
+    {
+        "nume": "Wolksvgen",
+        "capacitate": 1100
+    },
+    {
+        "nume": "Lada",
+        "capacitate": 200
+    }
+]
