@@ -22,3 +22,8 @@ git pull origin master
 ### Folder: mod1_local_storage
 
 Javascript's fetch api examples with mockapi.io and a local json file.
+
+## Mod2
+### Folder: mod2_filter_search
+
+Making a simple javascript filter function. Examples for remote api with fetch and parsing a local json file.
